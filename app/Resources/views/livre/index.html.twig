@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <a class="btn btn-success pull-right" href="{{ path('livre_new') }}">Cree un nouveau livre</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Date
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td><a href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.auteur }}</td>
+                <td>{% if livre.date %}{{ livre.date|date('Y/m/d') }}{% endif %}</td>
+                <td>{{ livre.categorie.libelle }}</td>
+                <td>
+                    <ul style="list-style:none; ">
+                        <li style="float: left">
+                            <a class="btn btn-success" href="{{ path('livre_show', { 'id': livre.id }) }}">show</a>
+                        </li>
+                        <li style="float: left ;margin-left: 2px">
+                            <a class="btn btn-primary" href="{{ path('livre_edit', { 'id': livre.id }) }}">edit</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+{% endblock %}

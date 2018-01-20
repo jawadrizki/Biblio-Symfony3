@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Livre : <strong>{{ livre.titre }}</strong></h2>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livre.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ livre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ livre.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if livre.date %}{{ livre.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ livre.categorie.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul style="list-style: none">
+
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Supprimer ce livre">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

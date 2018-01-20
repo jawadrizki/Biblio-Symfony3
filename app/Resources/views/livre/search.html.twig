@@ -1,0 +1,12 @@
+{{ form_start(form,{
+
+    'attr' : {'class' : 'navbar-form navbar-right' , 'action' : path('handelSearch')}
+}) }}
+    {{ form_widget(form.keyword,{
+        'attr' : {'class' : 'form-control', 'placeholder' : 'Entrer un mot cle'}
+    }) }}
+
+    {{ form_widget(form.submit,{
+        'attr' : {'class' : 'btn' , 'value' : 'Chercher'}
+    }) }}
+{{ form_end(form) }}
