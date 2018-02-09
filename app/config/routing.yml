@@ -1,5 +1,14 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+app_api:
+    resource: "@AppBundle/Controller/Api/"
+    type:     annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+livres:
+    type:     rest
+    resource: AppBundle\Controller\Api\LivreController
+categorie:
+    type:     rest
+    resource: AppBundle\Controller\Api\CategorieController
